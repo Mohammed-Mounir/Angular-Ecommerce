@@ -1,0 +1,32 @@
+<!-- medium item -->
+
+<div *ngIf="product.discount" class="item-medium-1__alert">Sale</div>
+<div
+  class="item-medium-1__image image"
+  [style.backgroundImage]="'url(' + product.imagesUrls[0] + ')'"
+>
+  <a
+    (click)="addedToCart()"
+    style="cursor: pointer"
+    class="item-medium-1__action"
+    >Add to Cart</a
+  >
+</div>
+<a routerLink="product-details">
+  <h4>{{ product.data[0].name }}</h4>
+  <div class="flex-row">
+    <div>
+      <del *ngIf="product.discount">{{ product.price }} EGP</del>
+      <span class="lable">{{ getPrice() }} EGP</span>
+    </div>
+  </div>
+</a>
+<div class="crud-actions">
+  <a [routerLink]="['/product', 'details', product._id]"
+    ><i class="far fa-eye"></i
+  ></a>
+  <a [routerLink]="['/product', 'edit', product._id]"
+    ><i class="fas fa-edit"></i
+  ></a>
+  <a href="#"><i class="fas fa-trash-alt"></i></a>
+</div>
