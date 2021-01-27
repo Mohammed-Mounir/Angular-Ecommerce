@@ -14,16 +14,20 @@ import { ProductService } from 'src/app/_services/product.services';
 })
 export class AddProductComponent implements OnInit {
   Object = Object;
-  product = {
+
+  product: any = {
     data: [{ name: '', description: '' }],
     price: 0,
     discount: 0,
     paymentTypes: [],
     tags: [],
-    categoryId: {},
+    categoryId: '',
   };
+
   paymentTypes: PaymentType[] = [];
-  productCategory: ProductCategory[] = [];
+
+  productCategory: any = [];
+
   editMode: boolean = false;
 
   constructor(
@@ -36,14 +40,14 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.editMode =
-      this.activatedRoute.snapshot.url[1] &&
-      this.activatedRoute.snapshot.url[1].path === 'edit';
+      this.activatedRoute.snapshot.url[0] &&
+      this.activatedRoute.snapshot.url[0].path === 'edit';
 
     if (this.editMode) {
       const id = this.activatedRoute.snapshot.params.id;
       this.productService.getProductById(id).subscribe(
         (res) => {
-          this.product = res['product'];
+          this.product = res;
         },
         () => {},
         () => {}
@@ -54,9 +58,7 @@ export class AddProductComponent implements OnInit {
 
     this.productCategoryService.getAllProductCategory().subscribe(
       (res) => {
-        console.log(res);
-
-        this.product.categoryId = res;
+        this.productCategory = res;
       },
       () => {},
       () => {}
@@ -64,7 +66,8 @@ export class AddProductComponent implements OnInit {
   }
 
   OnSubmit() {
-    console.log(this.product.categoryId);
+    console.log(this.product);
+
     this.productService.addProduct(this.product).subscribe(
       (response) => {
         console.log(response);

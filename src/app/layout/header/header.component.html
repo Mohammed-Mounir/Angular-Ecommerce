@@ -14,12 +14,9 @@
       <a routerLink="login" class="link">Login</a>
       <div class="dropdown">
         <div class="dropdown__header">
-          <div
-            class="image image--small image--circle"
-            style="
-              background-image: url('../../../assets/images/profile-image.jpg');
-            "
-          ></div>
+          <div class="image image--small image--circle" style="
+              background-image: url('../../../assets/img/profile.png');
+            "></div>
         </div>
         <div class="dropdown__body"></div>
       </div>
@@ -30,12 +27,9 @@
         <ng-container class="header">
           <!-- header -->
           <div class="dropdown__header">
-            <div
-              class="image image--small"
-              style="
+            <div class="image image--small" style="
                 background-image: url('../../../assets/img/icons/icon-cart-big.png');
-              "
-            >
+              ">
               <div class="notification notification--danger">
                 {{ newCart ? newCart.length : 0 }}
               </div>
@@ -48,10 +42,7 @@
           <div class="dropdown__body">
             <!-- items -->
             <ul class="dropdown__items list list--vr-separator">
-              <li
-                *ngFor="let item of newCart; let i = index"
-                class="dropdown__item list__item"
-              >
+              <li *ngFor="let item of newCart; let i = index" class="dropdown__item list__item">
                 <!-- item small 2 -->
                 <div class="item-small-1">
                   <!-- item data -->
@@ -59,23 +50,19 @@
                     <!-- title -->
                     <a href="" class="item-small-1__title">{{
                       item.data[0].name
-                    }}</a>
+                      }}</a>
                     <!-- price -->
                     <span class="item-small-1__description">
                       {{ item.quantity }} X EGP{{
-                        item.discount ? item.price - item.discount : item.price
+                      item.discount ? item.price - item.discount : item.price
                       }}
                     </span>
                   </div>
                   <!-- item image -->
                   <div class="item-small-1__image-box">
-                    <a
-                      href="#"
-                      class="item-small-1__image image"
-                      [style.backgroundImage]="
+                    <a href="#" class="item-small-1__image image" [style.backgroundImage]="
                         'url(' + item.imagesUrls[0] + ')'
-                      "
-                    >
+                      ">
                     </a>
                     <a (click)="removeItem(i)" class="item-small-1__action">
                       <i class="fas fa-times"></i>
@@ -88,8 +75,7 @@
             <div class="separator"></div>
             <div *ngIf="calculateTotalAmount() > 0" class="block">
               <span class="lable">Total:</span>
-              <span class="lable"
-                >{{ calculateTotalAmount() | currency: "EGP":"symbol" }}
+              <span class="lable">{{ calculateTotalAmount() | currency: "EGP":"symbol" }}
               </span>
             </div>
             <!-- actions -->
