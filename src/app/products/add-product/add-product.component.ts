@@ -17,8 +17,8 @@ export class AddProductComponent implements OnInit {
 
   product: any = {
     data: [{ name: '', description: '' }],
-    price: 0,
-    discount: 0,
+    price: null,
+    discount: null,
     paymentTypes: [],
     tags: [],
     categoryId: '',

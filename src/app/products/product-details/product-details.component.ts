@@ -21,8 +21,6 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     let id;
 
-    // this.relatedProducts = this.productService.getAllProducts().slice(3, 7);
-
     this.activatedRoute.params.subscribe(
       (params) => {
         id = params.id;
@@ -51,7 +49,5 @@ export class ProductDetailsComponent implements OnInit {
       },
       () => {}
     );
-
-    // const id = this.activatedRoute.snapshot.params.id;
   }
 }
